@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.smartown.study.BottomView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.smartown.study.touch.BottomView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/view_bottom"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</com.smartown.study.BottomView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="BOTTOM"
+            android:textSize="30dp"></TextView>
+
+    </LinearLayout>
+
+</com.smartown.study.touch.BottomView>

@@ -1,27 +1,22 @@
-package com.smartown.study;
+package com.smartown.study.scroll;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
-import android.widget.Scroller;
 
 /**
  * Created by Tiger on 2016-04-29.
  */
-public class LauncherView1 extends ViewGroup {
+public class LauncherView extends ViewGroup {
 
-    private Scroller scroller;
-
-    public LauncherView1(Context context) {
+    public LauncherView(Context context) {
         super(context);
         init(context);
     }
 
-    public LauncherView1(Context context, AttributeSet attrs) {
+    public LauncherView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
@@ -38,8 +33,6 @@ public class LauncherView1 extends ViewGroup {
         addView(view1);
         addView(view2);
         addView(view3);
-
-        scroller = new Scroller(context, new LinearInterpolator());
     }
 
     @Override
@@ -69,27 +62,11 @@ public class LauncherView1 extends ViewGroup {
     }
 
     public void clickToScroll() {
-        if (!scroller.isFinished()) {
-            return;
-        }
-        int currentY = getScrollY();
-        int deltaY = 0;
-        if (currentY < 2 * getMeasuredHeight()) {
-            deltaY = getMeasuredHeight();
+        if (getScrollY() < 2 * getMeasuredHeight()) {
+            scrollBy(0, getMeasuredHeight());
         } else {
-            deltaY = -2 * getMeasuredHeight();
+            scrollTo(0, 0);
         }
-        scroller.startScroll(0, currentY, 0, deltaY, 1000);
-        invalidate();
     }
 
-    @Override
-    public void computeScroll() {
-        if (scroller.computeScrollOffset()) {
-            //这里调用View的scrollTo()完成实际的滚动
-            scrollTo(scroller.getCurrX(), scroller.getCurrY());
-            //必须调用该方法，否则不一定能看到滚动效果
-            postInvalidate();
-        }
-    }
 }

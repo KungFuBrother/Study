@@ -1,7 +1,6 @@
-package com.smartown.study;
+package com.smartown.study.touch;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,55 +11,45 @@ import android.widget.Scroller;
 /**
  * Created by Tiger on 2016-04-29.
  */
-public class LauncherView2 extends ViewGroup {
+public class ProductDetailView extends ViewGroup {
 
-    private int viewHeight = 0;
     private int currentPointerY = 0;
     private Scroller scroller;
 
-    public LauncherView2(Context context) {
+    private TopView topView;
+    private BottomView bottomView;
+
+    private boolean isTopViewShowing = true;
+
+    public ProductDetailView(Context context) {
         super(context);
         init(context);
     }
 
-    public LauncherView2(Context context, AttributeSet attrs) {
+    public ProductDetailView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
     private void init(Context context) {
-        View view1 = new View(context);
-        view1.setBackgroundColor(Color.RED);
-
-        View view2 = new View(context);
-        view2.setBackgroundColor(Color.GREEN);
-
-        View view3 = new View(context);
-        view3.setBackgroundColor(Color.BLUE);
-        addView(view1);
-        addView(view2);
-        addView(view3);
-
         scroller = new Scroller(context, new LinearInterpolator());
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // 设置该ViewGroup的大小
-        int width = MeasureSpec.getSize(widthMeasureSpec);
-        int height = MeasureSpec.getSize(heightMeasureSpec);
-        setMeasuredDimension(width, height);
-
-        int childCount = getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            View child = getChildAt(i);
-            // 设置每个子视图的大小
-            child.measure(width, height);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (topView == null || bottomView == null) {
+            return;
         }
+        topView.measure(widthMeasureSpec, heightMeasureSpec);
+        bottomView.measure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        if (topView == null || bottomView == null) {
+            return;
+        }
         int childCount = getChildCount();
         int y = 0;
         for (int i = 0; i < childCount; i++) {
@@ -70,8 +59,64 @@ public class LauncherView2 extends ViewGroup {
         }
     }
 
+    public void setBottomView(BottomView bottomView) {
+        this.bottomView = bottomView;
+        addViews();
+    }
+
+    public void setTopView(TopView topView) {
+        this.topView = topView;
+        addViews();
+    }
+
+    private void addViews() {
+        if (topView != null & bottomView != null) {
+            addView(topView);
+            addView(bottomView);
+        }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (topView == null || bottomView == null) {
+            return false;
+        }
+        switch (ev.getAction()) {
+
+            case MotionEvent.ACTION_DOWN:
+                currentPointerY = (int) ev.getY();
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                int deltaY = currentPointerY - (int) ev.getY();
+                if (isTopViewShowing) {
+                    if (topView.atBottom()) {
+                        if (deltaY < 0) {
+//                            topView在最底部时网上滑动
+                            return false;
+                        }
+                        return true;
+                    }
+                } else {
+                    if (bottomView.atTop()) {
+                        if (deltaY > 0) {
+//                            bottomView在最顶部时往下滑动
+                            return false;
+                        }
+                        return true;
+                    }
+                }
+                break;
+
+        }
+        return false;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (topView == null || bottomView == null) {
+            return super.onTouchEvent(event);
+        }
         // 如果当前正在滚动，调用父类的onTouchEvent
         if (!scroller.isFinished()) {
             return super.onTouchEvent(event);
@@ -105,29 +150,30 @@ public class LauncherView2 extends ViewGroup {
             case MotionEvent.ACTION_UP:
                 if (getScrollY() > getHeight() / 2)// 往上滑动
                 {
-                    scrollUp();
+                    scrollToBottom();
                 } else {
-                    scrollDown();
+                    scrollToTop();
                 }
-                postInvalidate();
                 break;
         }
 
         return true;
     }
 
-    public void scrollUp() {
+    public void scrollToBottom() {
         if (!scroller.isFinished()) {
             return;
         }
+        isTopViewShowing = false;
         scroller.startScroll(0, getScrollY(), 0, getHeight() - getScrollY(), getHeight() - getScrollY());
         invalidate();
     }
 
-    public void scrollDown() {
+    public void scrollToTop() {
         if (!scroller.isFinished()) {
             return;
         }
+        isTopViewShowing = true;
         scroller.startScroll(0, getScrollY(), 0, -getScrollY(), getScrollY());
         invalidate();
     }
@@ -140,6 +186,14 @@ public class LauncherView2 extends ViewGroup {
             //必须调用该方法，否则不一定能看到滚动效果
             postInvalidate();
         }
+    }
+
+    public interface ScrollListener {
+
+        boolean atTop();
+
+        boolean atBottom();
+
     }
 
 }

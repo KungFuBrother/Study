@@ -1,9 +1,14 @@
-package com.smartown.study;
+package com.smartown.study.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+
+import com.smartown.study.R;
+import com.smartown.study.touch.BottomView;
+import com.smartown.study.touch.ProductDetailView;
+import com.smartown.study.touch.TopView;
 
 /**
  * Created by Tiger on 2016-05-03.
@@ -23,6 +28,5 @@ public class ProductDetailActivity extends AppCompatActivity {
         bottomView = (BottomView) LayoutInflater.from(this).inflate(R.layout.view_bottom, null);
         productDetailView.setTopView(topView);
         productDetailView.setBottomView(bottomView);
-        bottomView.loadUrl("http://www.baidu.com");
     }
 }

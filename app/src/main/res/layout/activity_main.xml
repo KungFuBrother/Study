@@ -5,25 +5,28 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-    <com.smartown.study.LauncherView
-        android:id="@+id/view"
+    <Button
+        android:id="@+id/main_scroll"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:layout_weight="1"></com.smartown.study.LauncherView>
+        android:text="SCROLL"
+        android:textSize="16dp" />
 
-    <com.smartown.study.LauncherView1
-        android:id="@+id/view1"
+    <Button
+        android:id="@+id/main_touch"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:layout_weight="1"></com.smartown.study.LauncherView1>
+        android:text="TOUCH"
+        android:textSize="16dp" />
 
-    <com.smartown.study.LauncherView2
-        android:id="@+id/view2"
+    <Button
+        android:id="@+id/main_label"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_margin="8dp"
-        android:layout_weight="1"></com.smartown.study.LauncherView2>
+        android:text="LABEL"
+        android:textSize="16dp" />
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.smartown.study;
+package com.smartown.study.touch;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,7 +8,7 @@ import android.widget.ScrollView;
 /**
  * Created by Tiger on 2016-05-03.
  */
-public class BottomView extends WebView implements ProductDetailView.ScrollListener {
+public class BottomView extends ScrollView implements ProductDetailView.ScrollListener {
 
     public BottomView(Context context) {
         super(context);

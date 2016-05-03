@@ -1,4 +1,4 @@
-package com.smartown.study;
+package com.smartown.study.touch;
 
 import android.content.Context;
 import android.util.AttributeSet;

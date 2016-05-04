@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Study</string>
+    <string-array name="labels">
+        <item>APPLE</item>
+        <item>SAMSUNG</item>
+        <item>MICROSOFT</item>
+        <item>GOOGLE</item>
+        <item>ALIBABA</item>
+        <item>TENCENT</item>
+    </string-array>
 </resources>

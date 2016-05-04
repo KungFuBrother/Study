@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/main_scroll"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:text="SCROLL"
-        android:textSize="16dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/main_touch"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:text="TOUCH"
-        android:textSize="16dp" />
+        <com.smartown.study.label.LabelView
+            android:id="@+id/main_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerWidth="8dp"
+            app:labelBackGround="@drawable/selector_label"
+            app:labelPadding="16dp"
+            app:labelTextSize="16dp"></com.smartown.study.label.LabelView>
 
-    <Button
-        android:id="@+id/main_label"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:text="LABEL"
-        android:textSize="16dp" />
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

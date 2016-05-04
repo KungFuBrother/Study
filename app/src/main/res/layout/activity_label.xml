@@ -14,10 +14,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:dividerWidth="8dp"
-            app:labelBackGround="@color/colorAccent"
-            app:labelPadding="8dp"
+            app:labelBackGround="@drawable/selector_label"
+            app:labelPadding="16dp"
             app:labelTextColor="#ffffff"
-            app:labelTextSize="14dp"
+            app:labelTextSize="16dp"
             app:stringArray="@array/labels"></com.smartown.study.label.LabelView>
 
     </LinearLayout>

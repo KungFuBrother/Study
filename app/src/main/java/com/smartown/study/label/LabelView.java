@@ -28,6 +28,8 @@ public class LabelView extends ViewGroup {
     private int labelBackGround = R.color.colorPrimary;
     private List<String> stringArray = new ArrayList<>();
 
+    private OnItemClickListener onItemClickListener;
+
     public LabelView(Context context) {
         this(context, null);
     }
@@ -91,13 +93,14 @@ public class LabelView extends ViewGroup {
         for (int i = 0; i < childCount; i++) {
             final int position = i;
             View child = getChildAt(i);
-            child.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    stringArray.remove(position);
-                    removeViewAt(position);
-                }
-            });
+            if (onItemClickListener != null) {
+                child.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onItemClickListener.onItemClick(position);
+                    }
+                });
+            }
             if (usedWidth + child.getMeasuredWidth() + 2 * dividerWidth > getMeasuredWidth()) {
                 usedWidth = 0;
             }
@@ -124,6 +127,14 @@ public class LabelView extends ViewGroup {
     }
 
     public void addLabel(String label) {
+        addLabel(label, labelTextSize, labelTextColor, labelBackGround);
+    }
+
+    public void addLabel(String label, int labelBackGround) {
+        addLabel(label, labelTextSize, labelTextColor, labelBackGround);
+    }
+
+    public void addLabel(String label, int labelTextSize, int labelTextColor, int labelBackGround) {
         stringArray.add(label);
         TextView textView = new TextView(getContext());
         textView.setPadding(labelPadding, labelPadding, labelPadding, labelPadding);
@@ -133,6 +144,16 @@ public class LabelView extends ViewGroup {
         textView.setText(label);
         textView.setGravity(Gravity.CENTER);
         addView(textView);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+
+        void onItemClick(int position);
+
     }
 
 }

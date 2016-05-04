@@ -15,7 +15,7 @@ public class LabelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ScreenUtil.init(this);
+        getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
         setContentView(R.layout.activity_label);
         labelView = (LabelView) findViewById(R.id.label_label);
         labelView.addLabel("空调");

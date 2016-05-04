@@ -22,6 +22,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
         setContentView(R.layout.activity_product_detail);
         productDetailView = (ProductDetailView) findViewById(R.id.product_detail);
         topView = (TopView) LayoutInflater.from(this).inflate(R.layout.view_top, null);

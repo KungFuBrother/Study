@@ -19,7 +19,7 @@ public class ScrollActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ScreenUtil.init(this);
+        getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
         setContentView(R.layout.activity_scroll);
         launcherView = (LauncherView) findViewById(R.id.view);
         launcherView1 = (LauncherView1) findViewById(R.id.view1);

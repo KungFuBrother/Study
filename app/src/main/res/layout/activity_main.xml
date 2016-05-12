@@ -18,6 +18,13 @@
             app:labelPadding="16dp"
             app:labelTextSize="16dp"></com.smartown.study.label.LabelView>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/selector_ripple_button"
+            android:text="RippleButton" />
+
     </LinearLayout>
 
 </ScrollView>

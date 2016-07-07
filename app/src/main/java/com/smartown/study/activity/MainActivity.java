@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         labels.add(new ModelLabel(ScrollActivity.class, "Scroller滚动初探"));
         labels.add(new ModelLabel(ProductDetailActivity.class, "onTouch触摸控制"));
         labels.add(new ModelLabel(LabelActivity.class, "LabelView标签控件"));
+        labels.add(new ModelLabel(WebActivity.class, "Web"));
+        labels.add(new ModelLabel(OpenGLActivity.class, "OpenGL"));
     }
 
     private class ModelLabel {

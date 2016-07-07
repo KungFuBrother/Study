@@ -24,6 +24,7 @@
         <activity android:name=".activity.LabelActivity" />
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.OpenGLActivity" />
+        <activity android:name=".activity.CommonAdapterActivity" />
 
     </application>
 

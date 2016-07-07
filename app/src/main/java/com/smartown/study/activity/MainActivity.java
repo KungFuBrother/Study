@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         labels.add(new ModelLabel(LabelActivity.class, "LabelView标签控件"));
         labels.add(new ModelLabel(WebActivity.class, "Web"));
         labels.add(new ModelLabel(OpenGLActivity.class, "OpenGL"));
+        labels.add(new ModelLabel(CommonAdapterActivity.class, "通用adapter"));
     }
 
     private class ModelLabel {

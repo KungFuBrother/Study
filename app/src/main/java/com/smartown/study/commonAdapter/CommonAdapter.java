@@ -31,7 +31,8 @@ public class CommonAdapter<T> extends RecyclerView.Adapter<CommonViewHolder> {
     @Override
     public void onBindViewHolder(CommonViewHolder holder, int position) {
         if (valueGetter != null) {
-            holder.getTextView().setText(valueGetter.getName(dataTList.get(position)));
+            //通过内容获取工具取值
+            holder.getTextView().setText(valueGetter.getValue(dataTList.get(position)));
         }
     }
 
@@ -40,6 +41,11 @@ public class CommonAdapter<T> extends RecyclerView.Adapter<CommonViewHolder> {
         return dataTList.size();
     }
 
+    /**
+     * 设置内容获取工具
+     *
+     * @param valueGetter
+     */
     public void setValueGetter(ValueGetter<T> valueGetter) {
         this.valueGetter = valueGetter;
     }

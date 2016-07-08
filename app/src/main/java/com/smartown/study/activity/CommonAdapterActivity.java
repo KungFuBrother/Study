@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.smartown.study.R;
 import com.smartown.study.commonAdapter.City;
 import com.smartown.study.commonAdapter.CommonAdapter;
-import com.smartown.study.commonAdapter.User;
+import com.smartown.study.commonAdapter.Person;
 import com.smartown.study.commonAdapter.ValueGetter;
 
 import java.util.ArrayList;
@@ -28,27 +28,34 @@ public class CommonAdapterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_common_adapter);
         recyclerView = (RecyclerView) findViewById(R.id.common_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(CommonAdapterActivity.this));
-        initUser();
+//        initUser();
         initCity();
     }
 
+    /**
+     * 数据为人物
+     */
     private void initUser() {
-        List<User> users = new ArrayList<>();
-        users.add(new User("12", "张三", "男"));
-        users.add(new User("18", "翠花", "女"));
-        users.add(new User("22", "刘德华", "男"));
-        users.add(new User("16", "赵四", "男"));
-        users.add(new User("24", "Angelababy", "女"));
-        CommonAdapter<User> commonAdapter = new CommonAdapter<>(CommonAdapterActivity.this, users);
-        commonAdapter.setValueGetter(new ValueGetter<User>() {
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("12", "张三", "男"));
+        persons.add(new Person("18", "翠花", "女"));
+        persons.add(new Person("22", "刘德华", "男"));
+        persons.add(new Person("16", "赵四", "男"));
+        persons.add(new Person("24", "Angelababy", "女"));
+        CommonAdapter<Person> commonAdapter = new CommonAdapter<>(CommonAdapterActivity.this, persons);
+        commonAdapter.setValueGetter(new ValueGetter<Person>() {
             @Override
-            public String getName(User user) {
-                return user.getName();
+            public String getValue(Person person) {
+                //重写取值方法，返回人物描述
+                return person.getName() + "/" + person.getSex() + "/今年" + person.getAge() + "岁";
             }
         });
         recyclerView.setAdapter(commonAdapter);
     }
 
+    /**
+     * 数据为城市
+     */
     private void initCity() {
         List<City> cities = new ArrayList<>();
         cities.add(new City("成都", "四川"));
@@ -62,7 +69,7 @@ public class CommonAdapterActivity extends AppCompatActivity {
         CommonAdapter<City> commonAdapter = new CommonAdapter<>(CommonAdapterActivity.this, cities);
         commonAdapter.setValueGetter(new ValueGetter<City>() {
             @Override
-            public String getName(City city) {
+            public String getValue(City city) {
                 return city.getProvince() + " " + city.getName();
             }
         });

@@ -8,19 +8,24 @@ import com.smartown.study.R;
 import com.smartown.study.ScreenUtil;
 import com.smartown.study.label.LabelView;
 import com.smartown.study.label.ModelLabel;
+import com.smartown.study.newFeature.BlurActivity;
+import com.smartown.study.newFeature.FullScreenActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by Tiger on 2016-07-15.
+ */
+public class NewFeatureActivity extends AppCompatActivity {
 
     private LabelView labelView;
     private List<ModelLabel> labels = new ArrayList<>();
-//    private String[] labels = {"滚动初探", "触摸控制滚动及滚动翻页", "标签控件LabelView"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
         ScreenUtil.init(this);
         init();
         setContentView(R.layout.activity_main);
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         labelView.setOnItemClickListener(new LabelView.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent intent = new Intent(MainActivity.this, labels.get(position).getaClass());
+                Intent intent = new Intent(NewFeatureActivity.this, labels.get(position).getaClass());
                 intent.putExtra("title", labels.get(position).getLabel());
                 startActivity(intent);
             }
@@ -39,13 +44,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        labels.add(new ModelLabel(ScrollActivity.class, "Scroller滚动初探"));
-        labels.add(new ModelLabel(ProductDetailActivity.class, "onTouch触摸控制"));
-        labels.add(new ModelLabel(LabelActivity.class, "LabelView标签控件"));
-        labels.add(new ModelLabel(WebActivity.class, "Web"));
-        labels.add(new ModelLabel(OpenGLActivity.class, "OpenGL"));
-        labels.add(new ModelLabel(CommonAdapterActivity.class, "通用adapter"));
-        labels.add(new ModelLabel(NewFeatureActivity.class, "新特性"));
+        labels.add(new ModelLabel(FullScreenActivity.class, "全屏activity"));
+        labels.add(new ModelLabel(BlurActivity.class, "模糊效果"));
     }
 
 }

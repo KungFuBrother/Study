@@ -18,7 +18,7 @@
             app:labelPadding="16dp"
             app:labelTextColor="#ffffff"
             app:labelTextSize="16dp"
-            app:stringArray="@array/labels"></com.smartown.study.label.LabelView>
+            app:stringArray="@array/labels"/>
 
     </LinearLayout>
 

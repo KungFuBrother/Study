@@ -25,6 +25,9 @@
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.OpenGLActivity" />
         <activity android:name=".activity.CommonAdapterActivity" />
+        <activity android:name=".activity.NewFeatureActivity" />
+        <activity android:name=".newFeature.FullScreenActivity" />
+        <activity android:name=".newFeature.BlurActivity" />
 
     </application>
 

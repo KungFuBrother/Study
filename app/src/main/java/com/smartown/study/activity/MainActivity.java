@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         labels.add(new ModelLabel(OpenGLActivity.class, "OpenGL"));
         labels.add(new ModelLabel(CommonAdapterActivity.class, "通用adapter"));
         labels.add(new ModelLabel(NewFeatureActivity.class, "新特性"));
+        labels.add(new ModelLabel(RefreshActivity.class, "RefreshView"));
     }
 
 }

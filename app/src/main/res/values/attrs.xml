@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="LabelView">
-        <attr name="dividerWidth" format="dimension"></attr>
-        <attr name="labelPadding" format="dimension"></attr>
-        <attr name="labelTextSize" format="dimension"></attr>
-        <attr name="labelTextColor" format="color"></attr>
-        <attr name="labelBackGround" format="reference"></attr>
-        <attr name="stringArray" format="reference"></attr>
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="labelPadding" format="dimension" />
+        <attr name="labelTextSize" format="dimension" />
+        <attr name="labelTextColor" format="color" />
+        <attr name="labelBackGround" format="reference" />
+        <attr name="stringArray" format="reference" />
     </declare-styleable>
 </resources>

@@ -1,5 +1,7 @@
 package com.smartown.study.refresh;
 
+import android.view.View;
+
 /**
  * 作者：Tiger
  * <p>
@@ -20,5 +22,7 @@ public interface Scrollable {
      * @return 不能继续向下滚动，即滚动到底部
      */
     boolean cannotScrollDown();
+
+    View getView();
 
 }

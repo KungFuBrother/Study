@@ -2,6 +2,7 @@ package com.smartown.study.refresh;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ScrollView;
 
 /**
@@ -35,6 +36,11 @@ public class InnerScrollView extends ScrollView implements Scrollable {
             return false;
         }
         return InnerScrollView.this.getChildAt(0).getMeasuredHeight() == InnerScrollView.this.getScrollY() + getHeight();
+    }
+
+    @Override
+    public View getView() {
+        return this;
     }
 
 }
